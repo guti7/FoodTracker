@@ -86,16 +86,16 @@
 		CA1902DE1B10E523000271C4 /* FoodTracker */ = {
 			isa = PBXGroup;
 			children = (
+				CA1902EB1B10E523000271C4 /* Info.plist */,
 				CA1902DF1B10E523000271C4 /* AppDelegate.swift */,
-				CA1902E11B10E523000271C4 /* MealViewController.swift */,
-				CA1292771B150DF500303C8D /* RatingControl.swift */,
 				CCC6B0251D329060004CCCDC /* Meal.swift */,
-				CA1902E31B10E523000271C4 /* Main.storyboard */,
 				CCC6B0281D329A35004CCCDC /* MealTableViewCell.swift */,
 				CCC6B02A1D32C6BB004CCCDC /* MealTableViewController.swift */,
+				CA1902E11B10E523000271C4 /* MealViewController.swift */,
+				CA1292771B150DF500303C8D /* RatingControl.swift */,
 				CA96F92A1B1144F7000CC7F8 /* Assets.xcassets */,
 				CA1902E81B10E523000271C4 /* LaunchScreen.storyboard */,
-				CA1902EB1B10E523000271C4 /* Info.plist */,
+				CA1902E31B10E523000271C4 /* Main.storyboard */,
 			);
 			path = FoodTracker;
 			sourceTree = "<group>";

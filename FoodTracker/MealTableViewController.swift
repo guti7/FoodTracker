@@ -82,14 +82,21 @@ class MealTableViewController: UITableViewController {
             // checks if source can be downcast, assigns to local source
             // and checks if meal can be assigned to local meal
             
-            // then you can add a meal
-            // computes location in the table view where 
-            // the new table view cell(the new meal) will be inserted
-            let newIndexPath = NSIndexPath(forRow: meals.count, inSection: 0)
-            
-            meals.append(meal) // add to data model
-            
-            tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Bottom)
+            if let selectedIndexPath = tableView.indexPathForSelectedRow {
+                // Update existing meal.
+                meals[selectedIndexPath.row] = meal
+                tableView.reloadRowsAtIndexPaths([selectedIndexPath], withRowAnimation: .None)
+            } else {
+                
+                // then you can add a meal
+                // computes location in the table view where 
+                // the new table view cell(the new meal) will be inserted
+                let newIndexPath = NSIndexPath(forRow: meals.count, inSection: 0)
+                
+                meals.append(meal) // add to data model
+                
+                tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Bottom)
+            }
             
         }
     }
@@ -130,14 +137,25 @@ class MealTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        
+        if segue.identifier == "ShowDetail" {
+            let mealDetailViewController = segue.destinationViewController as! MealViewController
+            
+            // get the cell of origin segue
+            if let selectedMealCell = sender as? MealTableViewCell {
+                let indexPath = tableView.indexPathForCell(selectedMealCell)!
+                let selectedMeal = meals[indexPath.row]
+                mealDetailViewController.meal = selectedMeal
+            }
+            
+        } else if segue.identifier == "AddItem" {
+            print("Adding new meal.")
+        }
+        
     }
-    */
-
 }
