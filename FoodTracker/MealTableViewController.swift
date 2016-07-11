@@ -76,6 +76,23 @@ class MealTableViewController: UITableViewController {
 
         return cell
     }
+    
+    @IBAction func unwindToMealList(sender: UIStoryboardSegue) {
+        if let sourceViewController = sender.sourceViewController as? MealViewController, meal = sourceViewController.meal {
+            // checks if source can be downcast, assigns to local source
+            // and checks if meal can be assigned to local meal
+            
+            // then you can add a meal
+            // computes location in the table view where 
+            // the new table view cell(the new meal) will be inserted
+            let newIndexPath = NSIndexPath(forRow: meals.count, inSection: 0)
+            
+            meals.append(meal) // add to data model
+            
+            tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Bottom)
+            
+        }
+    }
 
 
     /*
